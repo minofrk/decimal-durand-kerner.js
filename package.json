@@ -1,0 +1,46 @@
+{
+  "name": "decimal-durand-kerner",
+  "version": "0.0.0",
+  "description": "JS/TS library for finding multiple roots of polynomials with complex coefficients using `decimal.js`.",
+  "keywords": [
+    "math",
+    "complex",
+    "decimal.js",
+    "root finding",
+    "durand kerner",
+    "arbitrary precision"
+  ],
+  "homepage": "https://github.com/minofrk/decimal-durand-kerner.js",
+  "bugs": {
+    "url": "https://github.com/minofrk/decimal-durand-kerner.js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minofrk/decimal-durand-kerner.js.git"
+  },
+  "license": "MIT",
+  "author": "古城みの <minofrk@gmail.com>",
+  "files": [
+    "src",
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf lib coverage",
+    "test": "prettier --check \"{src,test}/**/*.ts\" && tsc --noEmit && jest",
+    "format": "prettier --write \"{src,test}/**/*.ts\""
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.19",
+    "decimal.js": "^10.2.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "rimraf": "^3.0.0",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.4"
+  },
+  "peerDependencies": {
+    "decimal.js": "^10.2.0"
+  }
+}
