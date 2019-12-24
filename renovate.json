@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "config:base",
+    ":automergeMinor",
+    ":unpublishSafe",
+    ":prNotPending",
+    ":noUnscheduledUpdates",
+    ":timezone(Asia/Tokyo)"
+  ],
+  "schedule": "every weekend",
+  "labels": [
+    "renovate"
+  ],
+  "rangeStrategy": "bump"
+}
