@@ -37,12 +37,7 @@ export default function findRoots(
             return c.subtract(z, difference);
         });
 
-        if (
-            deciMath
-                .height(errors)
-                .abs()
-                .lessThanOrEqualTo(deciMath.height(roots).times(tolerance))
-        ) {
+        if (deciMath.height(errors).abs().lessThanOrEqualTo(deciMath.height(roots).times(tolerance))) {
             return { roots, successful: true };
         }
     }

@@ -35,10 +35,5 @@ export function absolute(x: ComplexDecimal): Decimal {
         return p;
     }
 
-    return q
-        .div(p)
-        .pow(2)
-        .plus(1)
-        .sqrt()
-        .times(p);
+    return q.div(p).pow(2).plus(1).sqrt().times(p);
 }

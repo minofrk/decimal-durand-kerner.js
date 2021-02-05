@@ -26,13 +26,7 @@ export function divide(x: ComplexDecimal, y: ComplexDecimal): ComplexDecimal {
     const denominator = absolute(y).pow(2);
 
     return {
-        re: x.re
-            .times(y.re)
-            .plus(x.im.times(y.im))
-            .div(denominator),
-        im: x.im
-            .times(y.re)
-            .minus(x.re.times(y.im))
-            .div(denominator),
+        re: x.re.times(y.re).plus(x.im.times(y.im)).div(denominator),
+        im: x.im.times(y.re).minus(x.re.times(y.im)).div(denominator),
     };
 }

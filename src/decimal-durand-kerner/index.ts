@@ -10,7 +10,7 @@ export function decimalDurandKerner(rawCoefficients: readonly InputCoefficient[]
 
     const decimalTolerance = new decimalConstructor(tolerance);
     const deciMath = new DeciMath(decimalConstructor);
-    const coefficients = rawCoefficients.map(x => deciMath.parse(x));
+    const coefficients = rawCoefficients.map((x) => deciMath.parse(x));
 
     if (coefficients.length <= 1) {
         throw new Error('`coefficients` must have at least 2 elements.');
@@ -18,7 +18,7 @@ export function decimalDurandKerner(rawCoefficients: readonly InputCoefficient[]
     if (c.isZero(coefficients[coefficients.length - 1])) {
         throw new Error('`coefficients` must end with a non-zero value.');
     }
-    if (coefficients.some(x => !c.isFinite(x))) {
+    if (coefficients.some((x) => !c.isFinite(x))) {
         throw new Error('`coefficients` must not contain `Infinity` and `NaN`.');
     }
     if (!decimalTolerance.isFinite()) {

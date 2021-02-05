@@ -10,17 +10,14 @@ declare global {
 }
 
 function areClose(x: Decimal, y: Decimal, delta: number): boolean {
-    return x
-        .minus(y)
-        .abs()
-        .lessThanOrEqualTo(delta);
+    return x.minus(y).abs().lessThanOrEqualTo(delta);
 }
 
 expect.extend({
     rootsToBeCloseTo(actual: readonly ComplexDecimal[], expected: readonly ComplexDecimal[], delta: number) {
         const pass =
             actual.length === expected.length &&
-            actual.every(x => !!expected.find(y => areClose(x.re, y.re, delta) && areClose(x.im, y.im, delta)));
+            actual.every((x) => !!expected.find((y) => areClose(x.re, y.re, delta) && areClose(x.im, y.im, delta)));
 
         return {
             pass,

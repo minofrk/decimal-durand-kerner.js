@@ -11,14 +11,14 @@ const commonConfig = {
 describe('decimalDurandKerner', () => {
     it.each<[readonly InputCoefficient[]]>([[[]], [[1]]])(
         'should throw if 1-2 coefficients are given.',
-        coefficients => {
+        (coefficients) => {
             expect(() => decimalDurandKerner(coefficients, commonConfig)).toThrow();
         },
     );
 
     it.each<[readonly InputCoefficient[]]>([[[1, 2, 5, 0]], [[{ re: 1, im: 3 }, 3, { re: 0, im: 0 }]]])(
         'should throw if given leading coefficient is 0.',
-        coefficients => {
+        (coefficients) => {
             expect(() => decimalDurandKerner(coefficients, commonConfig)).toThrow();
         },
     );
@@ -28,34 +28,34 @@ describe('decimalDurandKerner', () => {
         [[5, -Number.NaN, 6]],
         [[1, { re: -Infinity, im: 4 }, 1]],
         [[5, { re: new Decimal(5), im: Number.NaN }, 6]],
-    ])('should throw if there exists `Infinity` or `NaN` in coefficients.', coefficients => {
+    ])('should throw if there exists `Infinity` or `NaN` in coefficients.', (coefficients) => {
         expect(() => decimalDurandKerner(coefficients, commonConfig)).toThrow();
     });
 
     it.each<Config['maxIterations']>([Infinity, Number.NaN])(
         'should throw if `maxIterations` is not a finite number.',
-        maxIterations => {
+        (maxIterations) => {
             expect(() => decimalDurandKerner([1, 1], { ...commonConfig, maxIterations })).toThrow();
         },
     );
 
     it.each<Config['maxIterations']>([0, -3, 1.4, 1e100, Number.MAX_SAFE_INTEGER])(
         'should not throw if `maxIterations` is a finite number.',
-        maxIterations => {
+        (maxIterations) => {
             expect(() => decimalDurandKerner([1, 1], { ...commonConfig, maxIterations })).not.toThrow();
         },
     );
 
     it.each<Config['tolerance']>([Infinity, Number.NaN])(
         'should throw if `tolerance` is not a finite number.',
-        tolerance => {
+        (tolerance) => {
             expect(() => decimalDurandKerner([1, 1], { ...commonConfig, tolerance })).toThrow();
         },
     );
 
     it.each<Config['tolerance']>([0, -5, Number.MAX_VALUE, Number.MIN_VALUE])(
         'should not throw if `tolerance` is a finite number.',
-        tolerance => {
+        (tolerance) => {
             expect(() => decimalDurandKerner([1, 1], { ...commonConfig, tolerance })).not.toThrow();
         },
     );
@@ -82,7 +82,10 @@ describe('decimalDurandKerner', () => {
         // 178.5 - 58x + 2x^2 = 0 ⇔ x = 3.5, 25.5
         {
             coefficients: [178.5, -58, 2],
-            roots: [{ re: new Decimal(3.5), im: new Decimal(0) }, { re: new Decimal(25.5), im: new Decimal(0) }],
+            roots: [
+                { re: new Decimal(3.5), im: new Decimal(0) },
+                { re: new Decimal(25.5), im: new Decimal(0) },
+            ],
         },
 
         // x^3 = 0 ⇔ x = 0
@@ -133,7 +136,7 @@ describe('decimalDurandKerner', () => {
             '20615',
             '-210',
             '1',
-        ].map(x => new Decimal(x));
+        ].map((x) => new Decimal(x));
 
         const expectedRoots = Array.from({ length: 20 }, (_, i) => ({
             re: new Decimal(i + 1),

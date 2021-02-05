@@ -12,7 +12,7 @@ export default class Polynomial {
 
         // Let `coefficients` be a monic form of `rawCoefficients`
         const leader = rawCoefficients[this.degree];
-        this.coefficients = rawCoefficients.map(x => c.divide(x, leader));
+        this.coefficients = rawCoefficients.map((x) => c.divide(x, leader));
     }
 
     averageOfRoots(): ComplexDecimal {

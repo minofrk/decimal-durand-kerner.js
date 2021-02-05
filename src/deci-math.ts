@@ -42,6 +42,6 @@ export default class DeciMath {
     }
 
     height(vector: readonly ComplexDecimal[]): Decimal {
-        return this.decimalConstructor.max(...vector.map(x => absolute(x)));
+        return this.decimalConstructor.max(...vector.map((x) => absolute(x)));
     }
 }
